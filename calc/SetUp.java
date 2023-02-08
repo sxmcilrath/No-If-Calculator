@@ -20,12 +20,19 @@ public class SetUp {
 	 */
 	public static void setUpCalculator(CalculatorFace face) {
 
-		// delete this line.
-		face.writeToScreen("hello");
-		
-		
 		// add code here that will have the effect of connecting
 		// the given face to your calculator
+		int num = 0;
+		face.writeToScreen("hello");
+		face.addActionListener('+', new PlusListener(face));
+		face.addActionListener('-', new MinListener(face));
+		face.addActionListener('*', new MultListener(face));
+		face.addActionListener('/', new DivListener(face));
+		face.addActionListener('C', new ClearListener(face));
+		face.addNumberActionListener(num, new NumListener(face, num));
+		
+		
+		
 		
 		
 	}
