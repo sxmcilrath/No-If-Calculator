@@ -22,14 +22,25 @@ public class SetUp {
 
 		// add code here that will have the effect of connecting
 		// the given face to your calculator
-		int num = 0;
+		CalcInternal intern = new CalcInternal();
+		
 		face.writeToScreen("hello");
-		face.addActionListener('+', new PlusListener(face));
-		face.addActionListener('-', new MinListener(face));
-		face.addActionListener('*', new MultListener(face));
-		face.addActionListener('/', new DivListener(face));
-		face.addActionListener('C', new ClearListener(face));
-		face.addNumberActionListener(num, new NumListener(face, num));
+		face.addActionListener('+', new OpListener(face, intern, "+"));
+		face.addActionListener('-', new OpListener(face, intern, "-"));
+		face.addActionListener('*', new OpListener(face, intern, "*"));
+		face.addActionListener('/', new OpListener(face, intern, "/" ));
+		face.addActionListener('C', new OpListener(face, intern, "C"));
+		//connect #'s to action listeners 
+		face.addNumberActionListener(0, new NumListener(face, 0, intern));
+		face.addNumberActionListener(1, new NumListener(face, 1, intern));
+		face.addNumberActionListener(2, new NumListener(face, 2, intern));
+		face.addNumberActionListener(3, new NumListener(face, 3, intern));
+		face.addNumberActionListener(4, new NumListener(face, 4, intern));
+		face.addNumberActionListener(5, new NumListener(face, 5, intern));
+		face.addNumberActionListener(6, new NumListener(face, 6, intern));
+		face.addNumberActionListener(7, new NumListener(face, 7, intern));
+		face.addNumberActionListener(8, new NumListener(face, 8, intern));
+		face.addNumberActionListener(9, new NumListener(face, 9, intern));
 		
 		
 		
