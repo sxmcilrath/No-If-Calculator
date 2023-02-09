@@ -30,7 +30,7 @@ public class OpListener implements ActionListener {
 			
 			//displays number with or without decimal based on situation
 			if(intern.getDecReady()) {
-				face.writeToScreen(""+ intern.getFirst());
+				face.writeToScreen(((int)intern.getFirst()) + "." + intern.getPostDec());
 			}
 			else {
 				face.writeToScreen( ((int)intern.getFirst()) + "");
