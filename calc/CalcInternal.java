@@ -2,10 +2,11 @@ package calc;
 
 public class CalcInternal {
 
-	private int first;
-	private int second;
+	private double first;
+	private double second;
 	private String operation;
-	private int result;
+	private double result;
+	private boolean decReady;
 	private boolean ready;
 	
 	
@@ -15,16 +16,17 @@ public class CalcInternal {
 		second = 0; 
 		operation = null;
 		result = 0;
+		decReady = false;
 		ready = false;
 	}
 	
 	//Setters
-	public void setFirst(int num) {
-		first = num;
+	public void setFirst(double d) {
+		first = d;
 		
 	}
 	
-	public void setSecond(int num) {
+	public void setSecond(double num) {
 		second = num;
 		
 	}
@@ -34,12 +36,16 @@ public class CalcInternal {
 		
 	}
 	
+	public void setDecReady(boolean temp) {
+		decReady = temp;
+	}
+	
 	//Getters
-	public int getFirst() {
+	public double getFirst() {
 		return first;
 	}
 	
-	public int getSecond() {
+	public double getSecond() {
 		return second;
 	}
 	
@@ -47,6 +53,9 @@ public class CalcInternal {
 		return operation;
 	}
 	
+	public boolean getDecReady() {
+		return decReady;
+	}
 	
 	
 

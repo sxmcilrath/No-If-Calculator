@@ -24,12 +24,16 @@ public class SetUp {
 		// the given face to your calculator
 		CalcInternal intern = new CalcInternal();
 		
+		//connect operation buttons to listeners
 		face.writeToScreen("hello");
 		face.addActionListener('+', new OpListener(face, intern, "+"));
 		face.addActionListener('-', new OpListener(face, intern, "-"));
 		face.addActionListener('*', new OpListener(face, intern, "*"));
 		face.addActionListener('/', new OpListener(face, intern, "/" ));
 		face.addActionListener('C', new OpListener(face, intern, "C"));
+		face.addActionListener('.', new OpListener(face, intern, "."));
+		face.addPlusMinusActionListener(new OpListener(face, intern, "PM")); 
+		
 		//connect #'s to action listeners 
 		face.addNumberActionListener(0, new NumListener(face, 0, intern));
 		face.addNumberActionListener(1, new NumListener(face, 1, intern));
