@@ -54,6 +54,23 @@ public class OpListener implements ActionListener {
 			face.writeToScreen("");
 			
 		}
+		
+		//implement plus button
+		if(opType.equals("+")) {
+			intern.loadOperation("+");
+		}
+		
+		//implements equals button
+		if(opType.equals("=")) {
+			//will print result based on whether or not decimal has been placed
+			if(intern.getDecReady()) {
+				face.writeToScreen(intern.passOperation()+"");
+			}
+			else {
+				face.writeToScreen(((int)intern.passOperation())+"");
+			}
+			
+		}
 	
 	}
 

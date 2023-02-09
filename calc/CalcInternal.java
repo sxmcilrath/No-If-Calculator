@@ -7,8 +7,10 @@ public class CalcInternal {
 	private String postDec;
 	private String operation;
 	private double result;
+	
 	private boolean decReady;
 	private boolean postDecReady;
+	private boolean opReady;
 	private boolean ready;
 	
 	
@@ -21,6 +23,7 @@ public class CalcInternal {
 		decReady = false;
 		ready = false;
 		postDecReady = false;
+		opReady = false;
 		postDec = "";
 	}
 	
@@ -79,6 +82,10 @@ public class CalcInternal {
 		return postDecReady;
 	}
 	
+	public boolean getOpReady() {
+		return opReady;
+	}
+	
 	//Reset function to reset variables
 	public void resetVar() {
 		first = 0;
@@ -86,6 +93,22 @@ public class CalcInternal {
 		postDec = "";
 		decReady = false;
 		postDecReady = false;
+		opReady = false;
+		
+	}
+	
+	//loads up next operation and checks for other cases
+	public void loadOperation(String op) {
+		operation = op;
+		opReady = true;
+	}
+	
+	public double passOperation() {	
+		if(operation.equals("+")) {
+			result = first + second;
+			return result;
+		}
+		return 0;
 		
 	}
 	

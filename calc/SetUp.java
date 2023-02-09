@@ -23,7 +23,16 @@ public class SetUp {
 		// add code here that will have the effect of connecting
 		// the given face to your calculator
 		CalcInternal intern = new CalcInternal();
-		
+		/*
+		 * TO DO LIST
+		 * 
+		 * -Work on add, decimals dont work
+		 *  need to add a different boolean to see if any 
+		 *  decimal has been used for first or second and act accordingly.
+		 *  There is also something wrong when second is a decimal, it seems to store the old 
+		 *  decimal used for first.
+		 * 
+		 */
 		//connect operation buttons to listeners
 		face.writeToScreen("hello");
 		face.addActionListener('+', new OpListener(face, intern, "+"));
@@ -32,6 +41,7 @@ public class SetUp {
 		face.addActionListener('/', new OpListener(face, intern, "/" ));
 		face.addActionListener('C', new OpListener(face, intern, "C"));
 		face.addActionListener('.', new OpListener(face, intern, "."));
+		face.addActionListener('=', new OpListener(face,intern,"="));
 		face.addPlusMinusActionListener(new OpListener(face, intern, "PM")); 
 		
 		//connect #'s to action listeners 
