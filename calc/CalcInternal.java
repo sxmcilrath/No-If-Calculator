@@ -4,9 +4,11 @@ public class CalcInternal {
 
 	private double first;
 	private double second;
+	private String postDec;
 	private String operation;
 	private double result;
 	private boolean decReady;
+	private boolean postDecReady;
 	private boolean ready;
 	
 	
@@ -18,16 +20,23 @@ public class CalcInternal {
 		result = 0;
 		decReady = false;
 		ready = false;
+		postDecReady = false;
+		postDec = "";
 	}
 	
 	//Setters
-	public void setFirst(double d) {
-		first = d;
+	public void setFirst(double num ) {
+		first = num;
 		
 	}
 	
 	public void setSecond(double num) {
 		second = num;
+		
+	}
+	
+	public void setPostDec(String temp) {
+		postDec = temp;
 		
 	}
 	
@@ -40,6 +49,10 @@ public class CalcInternal {
 		decReady = temp;
 	}
 	
+	public void setPostDecReady(boolean temp) {
+		postDecReady = temp;
+	}
+	
 	//Getters
 	public double getFirst() {
 		return first;
@@ -49,12 +62,31 @@ public class CalcInternal {
 		return second;
 	}
 	
+	public String getPostDec() {
+		return postDec;
+		
+	}
+	
 	public String getOperation() {
 		return operation;
 	}
 	
 	public boolean getDecReady() {
 		return decReady;
+	}
+	
+	public boolean getPostDecReady() {
+		return postDecReady;
+	}
+	
+	//Reset function to reset variables
+	public void resetVar() {
+		first = 0;
+		second = 0;
+		postDec = "";
+		decReady = false;
+		postDecReady = false;
+		
 	}
 	
 	

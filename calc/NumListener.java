@@ -29,9 +29,19 @@ public class NumListener implements ActionListener {
 			//checks to see if user has pressed decimal button
 			if(intern.getDecReady()) {
 				
-				String newNum = intern.getFirst() + "" + num;
+				String newNum;
+				//workaround if statements that might not be needed after switching postDec to string		
+							//if(intern.getPostDecReady() == false) {
+							//newNum = (((int)intern.getFirst()) + "." + num);
+							//intern.setPostDecReady(true);
+							//}
+						//else{
+					newNum = (((int)intern.getFirst()) + "." + (intern.getPostDec())+ "" + num);
+						//}
+				
+				intern.setPostDec(((intern.getPostDec())+ "" + num));
 				face.writeToScreen(newNum);
-				intern.setFirst(Double.parseDouble(newNum));
+				//intern.setFirst(Double.parseDouble(newNum));
 			}
 			else {
 				String newNum = ((int)intern.getFirst()) + "" + num;

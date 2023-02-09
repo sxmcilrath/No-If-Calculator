@@ -40,8 +40,18 @@ public class OpListener implements ActionListener {
 		
 		//implement decimal button
 		if (opType.equals(".")) {
-			intern.setDecReady(true);
-			face.writeToScreen(intern.getFirst()+"");
+			if(intern.getDecReady() == false) {
+				face.writeToScreen(((int)intern.getFirst())+".");
+				intern.setDecReady(true);
+			}
+			
+			
+		}
+		
+		//implement clear button
+		if(opType.equals("C")) {
+			intern.resetVar();
+			face.writeToScreen("");
 			
 		}
 	
