@@ -95,10 +95,19 @@ public class OpListener implements ActionListener {
 		if(opType.equals("*")) {
 			intern.loadOperation("*");
 		}
+		
+		//implement division
+		if(opType.equals("/")) {
+			intern.loadOperation("/");
+		}
 	
 		
 		//implements equals button
 		if(opType.equals("=")) {
+			
+			if(intern.getOperation().equals("/")) {
+				face.writeToScreen(intern.passOperation()+"");
+			}
 			//will print result based on whether or not decimal has been placed
 			if(intern.getDecPressCheck()) {
 				intern.setSecond(Double.parseDouble(((int)intern.getSecond()) + "." + intern.getPostDecSecond()));

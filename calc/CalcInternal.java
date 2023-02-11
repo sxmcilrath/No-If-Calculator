@@ -153,10 +153,15 @@ public class CalcInternal {
 		
 		//multiplication
 		if(operation.equals("*")) {
-			result = first*second;
+			result = first * second;
 			return Double.parseDouble(calcFormat.format(result));
 		}
 		
+		//division
+		if(operation.equals("/")) {
+			result = first / second;
+			return result;
+		}
 		return 0;
 		
 	}
