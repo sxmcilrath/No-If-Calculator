@@ -1,5 +1,7 @@
 package calc;
 
+import java.text.DecimalFormat;
+
 public class CalcInternal {
 
 	private double first;
@@ -138,7 +140,11 @@ public class CalcInternal {
 			return result;
 		}
 		if(operation.equals("-")) {
-			return result = first - second;
+			System.out.println("" + (first - second));
+			//rounds decimals to take care of not needed zeros 
+			DecimalFormat calcFormat = new DecimalFormat("#.####");
+			result = first - second;
+			return Double.parseDouble(calcFormat.format(result));
 		}
 		return 0;
 		
