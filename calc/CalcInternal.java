@@ -134,18 +134,29 @@ public class CalcInternal {
 	}
 	
 	public double passOperation() {	
+		//rounds decimals to take care of not needed zeros 
+		DecimalFormat calcFormat = new DecimalFormat("#.####");
+		
+		//addition 
 		if(operation.equals("+")) {
 			
 			result = first + second;
 			return result;
 		}
+		
+		//subtraction
 		if(operation.equals("-")) {
-			System.out.println("" + (first - second));
-			//rounds decimals to take care of not needed zeros 
-			DecimalFormat calcFormat = new DecimalFormat("#.####");
+			
 			result = first - second;
 			return Double.parseDouble(calcFormat.format(result));
 		}
+		
+		//multiplication
+		if(operation.equals("*")) {
+			result = first*second;
+			return Double.parseDouble(calcFormat.format(result));
+		}
+		
 		return 0;
 		
 	}

@@ -90,6 +90,11 @@ public class OpListener implements ActionListener {
 		if(opType.equals("-")) {
 			intern.loadOperation("-");
 		}
+		
+		//implement multiplication
+		if(opType.equals("*")) {
+			intern.loadOperation("*");
+		}
 	
 		
 		//implements equals button
