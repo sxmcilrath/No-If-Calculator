@@ -104,6 +104,11 @@ public class OpListener implements ActionListener {
 		
 		//implements equals button
 		if(opType.equals("=")) {
+			//if operations have already been done then it will make the first number the 
+			//result of the previous operation
+			if(intern.getEqualPressCheck()) {
+				intern.setFirst(intern.getResult());
+			}
 			
 			if(intern.getOperation().equals("/")) {
 				face.writeToScreen(intern.passOperation()+"");
@@ -116,6 +121,8 @@ public class OpListener implements ActionListener {
 			else {
 				face.writeToScreen(((int)intern.passOperation())+"");
 			}
+		
+			intern.setEqualPressCheck(true);
 			
 		}
 	

@@ -34,7 +34,6 @@ public class SetUp {
 		 * 
 		 */
 		//connect operation buttons to listeners
-		face.writeToScreen("hello");
 		face.addActionListener('+', new OpListener(face, intern, "+"));
 		face.addActionListener('-', new OpListener(face, intern, "-"));
 		face.addActionListener('*', new OpListener(face, intern, "*"));

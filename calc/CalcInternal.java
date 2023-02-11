@@ -15,7 +15,7 @@ public class CalcInternal {
 	private boolean postDecReady; //boolean for post decimal number
 	private boolean opReady; //boolean used to check if operation has been input
 	private boolean decPressCheck; // checks used for if either first or second is a decimal
-	private boolean ready;
+	private boolean equalPressCheck;
 	
 	
 	public CalcInternal() {
@@ -25,10 +25,10 @@ public class CalcInternal {
 		operation = null;
 		result = 0;
 		decReady = false;
-		ready = false;
 		postDecReady = false;
 		opReady = false;
 		decPressCheck = false;
+		equalPressCheck = false;
 		postDecFirst = "";
 		postDecSecond = "";
 	}
@@ -75,6 +75,10 @@ public class CalcInternal {
 		opReady = temp;
 	}
 	
+	public void setEqualPressCheck(boolean temp) {
+		equalPressCheck = temp;
+	}
+	
 	//Getters
 	public double getFirst() {
 		return first;
@@ -82,6 +86,10 @@ public class CalcInternal {
 	
 	public double getSecond() {
 		return second;
+	}
+	
+	public double getResult() {
+		return result;
 	}
 	
 	public String getPostDecFirst() {
@@ -114,6 +122,10 @@ public class CalcInternal {
 		return decPressCheck;
 	}
 	
+	public boolean getEqualPressCheck() {
+		return equalPressCheck;
+	}
+	
 	//Reset function to reset variables
 	public void resetVar() {
 		first = 0;
@@ -123,6 +135,7 @@ public class CalcInternal {
 		decReady = false;
 		postDecReady = false;
 		opReady = false;
+		equalPressCheck = false;
 		
 	}
 	
@@ -160,7 +173,7 @@ public class CalcInternal {
 		//division
 		if(operation.equals("/")) {
 			result = first / second;
-			return result;
+			return Double.parseDouble(calcFormat.format(result));
 		}
 		return 0;
 		
