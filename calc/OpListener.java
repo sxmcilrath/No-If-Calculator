@@ -86,6 +86,10 @@ public class OpListener implements ActionListener {
 			intern.loadOperation("+");
 		}
 		
+		//implement subtract
+		if(opType.equals("-")) {
+			intern.loadOperation("-");
+		}
 	
 		
 		//implements equals button

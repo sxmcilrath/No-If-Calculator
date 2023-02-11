@@ -137,6 +137,9 @@ public class CalcInternal {
 			result = first + second;
 			return result;
 		}
+		if(operation.equals("-")) {
+			return result = first - second;
+		}
 		return 0;
 		
 	}
