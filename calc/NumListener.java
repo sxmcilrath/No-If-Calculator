@@ -25,7 +25,6 @@ public class NumListener implements ActionListener {
 		 */
 		
 		//if statement to decide whether or not to alter first or second number
-		System.out.println("This is the op ready check when # is pressed: " + intern.getOpReady());
 		if(intern.getOpReady()) {
 			
 			//sets first number by taking number before and combining it with the string past the decimal
@@ -34,17 +33,13 @@ public class NumListener implements ActionListener {
 			 * I'm setting a temp var to hold the first num, change the reset function later
 			 * to better fit the situation 
 			 */
-			//double tempNum = (Double.parseDouble(((int)intern.getFirst()) + "." + intern.getPostDec()));
-			//double tempNumSec = (Double.parseDouble(((int)intern.getSecond()) + "." + intern.getPostDec()));
-			//intern.resetVar();
-			//set First number
+			
 			intern.setFirst(Double.parseDouble(((int)intern.getFirst()) + "." + intern.getPostDecFirst()));
 			//intern.setSecond(tempNum);
 			intern.setOpReady(true);
 			
 			
 			if(intern.getSecond() != 0) {
-				System.out.println("This is to make sure we get past second check");
 				//checks to see if user has pressed decimal button
 				if(intern.getDecReady()) {
 					
