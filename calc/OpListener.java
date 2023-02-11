@@ -30,7 +30,7 @@ public class OpListener implements ActionListener {
 			
 			//displays number with or without decimal based on situation
 			if(intern.getDecReady()) {
-				face.writeToScreen(((int)intern.getFirst()) + "." + intern.getPostDec());
+				face.writeToScreen(((int)intern.getFirst()) + "." + intern.getPostDecFirst());
 			}
 			else {
 				face.writeToScreen( ((int)intern.getFirst()) + "");
@@ -41,8 +41,17 @@ public class OpListener implements ActionListener {
 		//implement decimal button
 		if (opType.equals(".")) {
 			if(intern.getDecReady() == false) {
-				face.writeToScreen(((int)intern.getFirst())+".");
+				
+				if(intern.getOpReady()) { 
+					face.writeToScreen((int)intern.getSecond()+"."); 
+					}
+				
+				else {
+					face.writeToScreen(((int)intern.getFirst())+".");
+					}
+				
 				intern.setDecReady(true);
+				intern.setDecPressCheck(true);
 			}
 			
 			
@@ -63,7 +72,8 @@ public class OpListener implements ActionListener {
 		//implements equals button
 		if(opType.equals("=")) {
 			//will print result based on whether or not decimal has been placed
-			if(intern.getDecReady()) {
+			if(intern.getDecPressCheck()) {
+				intern.setSecond(Double.parseDouble(((int)intern.getSecond()) + "." + intern.getPostDecSecond()));
 				face.writeToScreen(intern.passOperation()+"");
 			}
 			else {

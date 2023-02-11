@@ -4,13 +4,15 @@ public class CalcInternal {
 
 	private double first;
 	private double second;
-	private String postDec;
+	private String postDecFirst;
+	private String postDecSecond;
 	private String operation;
 	private double result;
 	
 	private boolean decReady;
-	private boolean postDecReady;
-	private boolean opReady;
+	private boolean postDecReady; //boolean for post decimal number
+	private boolean opReady; //boolean used to check if operation has been input
+	private boolean decPressCheck; // checks used for if either first or second is a decimal
 	private boolean ready;
 	
 	
@@ -24,7 +26,9 @@ public class CalcInternal {
 		ready = false;
 		postDecReady = false;
 		opReady = false;
-		postDec = "";
+		decPressCheck = false;
+		postDecFirst = "";
+		postDecSecond = "";
 	}
 	
 	//Setters
@@ -38,8 +42,13 @@ public class CalcInternal {
 		
 	}
 	
-	public void setPostDec(String temp) {
-		postDec = temp;
+	public void setPostDecFirst (String temp) {
+		postDecFirst = temp;
+		
+	}
+	
+	public void setPostDecSecond (String temp) {
+		postDecSecond = temp;
 		
 	}
 	
@@ -56,6 +65,14 @@ public class CalcInternal {
 		postDecReady = temp;
 	}
 	
+	public void setDecPressCheck(boolean temp) {
+		decPressCheck = temp;
+	}
+	
+	public void setOpReady(boolean temp) {
+		opReady = temp;
+	}
+	
 	//Getters
 	public double getFirst() {
 		return first;
@@ -65,8 +82,13 @@ public class CalcInternal {
 		return second;
 	}
 	
-	public String getPostDec() {
-		return postDec;
+	public String getPostDecFirst() {
+		return postDecFirst;
+		
+	}
+	
+	public String getPostDecSecond() {
+		return postDecSecond;
 		
 	}
 	
@@ -86,11 +108,16 @@ public class CalcInternal {
 		return opReady;
 	}
 	
+	public boolean getDecPressCheck() {
+		return decPressCheck;
+	}
+	
 	//Reset function to reset variables
 	public void resetVar() {
 		first = 0;
 		second = 0;
-		postDec = "";
+		postDecFirst = "";
+		postDecSecond = "";
 		decReady = false;
 		postDecReady = false;
 		opReady = false;
@@ -101,10 +128,12 @@ public class CalcInternal {
 	public void loadOperation(String op) {
 		operation = op;
 		opReady = true;
+		decReady = false;
 	}
 	
 	public double passOperation() {	
 		if(operation.equals("+")) {
+			
 			result = first + second;
 			return result;
 		}
