@@ -32,8 +32,16 @@ public class OpListener implements ActionListener {
 			if(intern.getOpReady() == false) {
 				//checks if a number has been pressed
 				if(intern.getFirst() == 0) {
-					intern.setPMCheck(true);
-					face.writeToScreen("-");
+					//checks to see if PM had already been selected
+					if(intern.getPMCheck()) {
+						face.writeToScreen("");
+						intern.setPMCheck(false);
+					}
+					else {
+						intern.setPMCheck(true);
+						face.writeToScreen("-");
+					}
+					
 				}
 				else {
 					
@@ -100,6 +108,7 @@ public class OpListener implements ActionListener {
 		
 		//implement plus button
 		if(opType.equals("+")) {
+			if(intern.getOpReady() && )
 			intern.loadOperation("+");
 		}
 		
