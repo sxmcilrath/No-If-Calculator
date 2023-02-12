@@ -113,14 +113,18 @@ public class OpListener implements ActionListener {
 			if(intern.getOperation().equals("/")) {
 				face.writeToScreen(intern.passOperation()+"");
 			}
-			//will print result based on whether or not decimal has been placed
-			if(intern.getDecPressCheck()) {
-				intern.setSecond(Double.parseDouble(((int)intern.getSecond()) + "." + intern.getPostDecSecond()));
-				face.writeToScreen(intern.passOperation()+"");
-			}
+			
 			else {
-				face.writeToScreen(((int)intern.passOperation())+"");
+				if(intern.getDecPressCheck()) {
+					intern.setSecond(Double.parseDouble(((int)intern.getSecond()) + "." + intern.getPostDecSecond()));
+					face.writeToScreen(intern.passOperation()+"");
+				}
+				else {
+					face.writeToScreen(((int)intern.passOperation())+"");
+				}
 			}
+			//will print result based on whether or not decimal has been placed
+			
 		
 			intern.setEqualPressCheck(true);
 			
