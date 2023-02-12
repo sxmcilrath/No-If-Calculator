@@ -19,13 +19,8 @@ public class NumListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/* TODO 
-		 * Need to have the first number add up any previous operations
-		 * Need to print to the screen 
-		 */
 		
 		//if statement to decide whether or not to alter first or second number
-		
 		if(intern.getOpReady()) {
 			
 			//sets first number by taking number before and combining it with the string past the decimal			
@@ -62,7 +57,8 @@ public class NumListener implements ActionListener {
 					intern.setSecond(num);
 				}
 			}
-		
+			//lets calcinternal know that the sec # ha been modified
+			intern.setSecCheck(true);
 		}
 		
 		//first number in operation
@@ -72,7 +68,6 @@ public class NumListener implements ActionListener {
 					if(intern.getDecReady()) {
 						
 						String newNum;
-					
 						newNum = (((int)intern.getFirst()) + "." + (intern.getPostDecFirst())+ "" + num);
 					
 						intern.setPostDecFirst(((intern.getPostDecFirst())+ "" + num));
@@ -88,14 +83,29 @@ public class NumListener implements ActionListener {
 				}
 				else {
 					if(intern.getPMCheck()) {
-						num = -num;
+						if(intern.getDecReady()) {
+							
+							String newNum;
+							newNum = ((-(int)intern.getFirst()) + "." + (intern.getPostDecFirst())+ "" + num);
+							intern.setPostDecFirst(((intern.getPostDecFirst())+ "" + num));
+							face.writeToScreen(newNum);
+						}
+						else {
+							String newNum = ((int)intern.getFirst()) + "" + num;
+							face.writeToScreen(newNum);
+							intern.setFirst(Double.parseDouble(newNum));
+							
+						}
+						
+						/*num = -num;
 						face.writeToScreen("" + num);
 						intern.setFirst(num);
 						intern.setPMCheck(false);
+						*/
 					}
 					else {
-						face.writeToScreen("" + num);
-						intern.setFirst(num);
+						//face.writeToScreen("" + num);
+						//intern.setFirst(num);
 					}
 				}
 		

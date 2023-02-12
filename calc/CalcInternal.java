@@ -17,6 +17,7 @@ public class CalcInternal {
 	private boolean decPressCheck; // checks used for if either first or second is a decimal
 	private boolean equalPressCheck;//checks for equal button press
 	private boolean pmCheck; //used to check for case where # is 0 but PM has been hit
+	private boolean secCheck; //used to check whether or not the 2nd # has been input yet
 	
 	
 	public CalcInternal() {
@@ -31,6 +32,7 @@ public class CalcInternal {
 		decPressCheck = false;
 		equalPressCheck = false;
 		pmCheck = false;
+		secCheck = false;
 		postDecFirst = "";
 		postDecSecond = "";
 	}
@@ -85,6 +87,10 @@ public class CalcInternal {
 		pmCheck = temp;
 	}
 	
+	public void setSecCheck(boolean temp) {
+		secCheck = temp;
+	}
+	
 	//Getters
 	public double getFirst() {
 		return first;
@@ -136,6 +142,10 @@ public class CalcInternal {
 		return pmCheck;
 	}
 	
+	public boolean getSecCheck() {
+		return secCheck;
+	}
+	
 	//Reset function to reset variables
 	public void resetVar() {
 		first = 0;
@@ -147,6 +157,7 @@ public class CalcInternal {
 		opReady = false;
 		equalPressCheck = false;
 		pmCheck = false;
+		secCheck = false;
 		
 	}
 	

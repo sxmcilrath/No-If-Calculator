@@ -16,6 +16,16 @@ public class OpListener implements ActionListener {
 		// TODO Auto-generated constructor stub
 	}
 
+	//calculates previous operations 
+	public void calcPrevOp() {
+		//needs to add up previous operations if applicable
+		if(intern.getOpReady() && intern.getSecCheck()) {
+			intern.setFirst(intern.passOperation());
+			face.writeToScreen(intern.getFirst()+"");
+			intern.setSecond(0);
+		}
+	}
+		
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -83,6 +93,7 @@ public class OpListener implements ActionListener {
 		//implement decimal button
 		if (opType.equals(".")) {
 			if(intern.getDecReady() == false) {
+				System.out.println("making it past in opList");
 				
 				if(intern.getOpReady()) { 
 					face.writeToScreen((int)intern.getSecond()+"."); 
@@ -108,22 +119,27 @@ public class OpListener implements ActionListener {
 		
 		//implement plus button
 		if(opType.equals("+")) {
-			if(intern.getOpReady() && )
+			//needs to add up previous operations if applicable
+			this.calcPrevOp();
+			
 			intern.loadOperation("+");
 		}
 		
 		//implement subtract
 		if(opType.equals("-")) {
+			this.calcPrevOp();
 			intern.loadOperation("-");
 		}
 		
 		//implement multiplication
 		if(opType.equals("*")) {
+			this.calcPrevOp();
 			intern.loadOperation("*");
 		}
 		
 		//implement division
 		if(opType.equals("/")) {
+			this.calcPrevOp();
 			intern.loadOperation("/");
 		}
 	
@@ -132,10 +148,14 @@ public class OpListener implements ActionListener {
 		if(opType.equals("=")) {
 			//if operations have already been done then it will make the first number the 
 			//result of the previous operation
+			if(!intern.getSecCheck()) {
+				return;
+			}
 			if(intern.getEqualPressCheck()) {
 				intern.setFirst(intern.getResult());
 			}
 			
+			//division it makes it easier to never round and mess with (int)
 			if(intern.getOperation().equals("/")) {
 				face.writeToScreen(intern.passOperation()+"");
 			}
@@ -149,9 +169,9 @@ public class OpListener implements ActionListener {
 					face.writeToScreen(((int)intern.passOperation())+"");
 				}
 			}
-			//will print result based on whether or not decimal has been placed
-			
-		
+			//reset first num
+			//intern.setFirst(0);
+			//intern.setSecond(0);
 			intern.setEqualPressCheck(true);
 			
 		}
