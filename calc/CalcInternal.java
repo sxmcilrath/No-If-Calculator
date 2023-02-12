@@ -15,7 +15,8 @@ public class CalcInternal {
 	private boolean postDecReady; //boolean for post decimal number
 	private boolean opReady; //boolean used to check if operation has been input
 	private boolean decPressCheck; // checks used for if either first or second is a decimal
-	private boolean equalPressCheck;
+	private boolean equalPressCheck;//checks for equal button press
+	private boolean pmCheck; //used to check for case where # is 0 but PM has been hit
 	
 	
 	public CalcInternal() {
@@ -29,6 +30,7 @@ public class CalcInternal {
 		opReady = false;
 		decPressCheck = false;
 		equalPressCheck = false;
+		pmCheck = false;
 		postDecFirst = "";
 		postDecSecond = "";
 	}
@@ -79,6 +81,10 @@ public class CalcInternal {
 		equalPressCheck = temp;
 	}
 	
+	public void setPMCheck(boolean temp) {
+		pmCheck = temp;
+	}
+	
 	//Getters
 	public double getFirst() {
 		return first;
@@ -126,6 +132,10 @@ public class CalcInternal {
 		return equalPressCheck;
 	}
 	
+	public boolean getPMCheck() {
+		return pmCheck;
+	}
+	
 	//Reset function to reset variables
 	public void resetVar() {
 		first = 0;
@@ -136,6 +146,7 @@ public class CalcInternal {
 		postDecReady = false;
 		opReady = false;
 		equalPressCheck = false;
+		pmCheck = false;
 		
 	}
 	
@@ -148,7 +159,7 @@ public class CalcInternal {
 	
 	public double passOperation() {	
 		//rounds decimals to take care of not needed zeros 
-		DecimalFormat calcFormat = new DecimalFormat("#.####");
+		DecimalFormat calcFormat = new DecimalFormat("#.#############");
 		
 		//addition 
 		if(operation.equals("+")) {

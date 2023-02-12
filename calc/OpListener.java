@@ -26,30 +26,47 @@ public class OpListener implements ActionListener {
 		
 		//implement PLUS MINUS button
 		if (opType.equals("PM")) {
+		
 			
 			//check to see if on first or second num
 			if(intern.getOpReady() == false) {
-				
-				intern.setFirst(-intern.getFirst());
-				
-				//displays number with or without decimal based on situation
-				if(intern.getDecReady()) {
-					face.writeToScreen(((int)intern.getFirst()) + "." + intern.getPostDecFirst());
+				//checks if a number has been pressed
+				if(intern.getFirst() == 0) {
+					intern.setPMCheck(true);
+					face.writeToScreen("-");
 				}
 				else {
-					face.writeToScreen( ((int)intern.getFirst()) + "");
+					
+				
+					intern.setFirst(-intern.getFirst());
+				
+					//displays number with or without decimal based on situation
+					if(intern.getDecReady()) {
+						face.writeToScreen(((int)intern.getFirst()) + "." + intern.getPostDecFirst());
+					}
+					else {
+						face.writeToScreen( ((int)intern.getFirst()) + "");
+					}
 				}
+					
 			}
 			else {
-				intern.setSecond(-intern.getSecond());
-				
-				//displays number with or without decimal based on situation
-				if(intern.getDecReady()) {
-					face.writeToScreen(((int)intern.getSecond()) + "." + intern.getPostDecSecond());
+				if(intern.getSecond() == 0) {
+					intern.setPMCheck(true);
+					face.writeToScreen("-");
 				}
 				else {
-					face.writeToScreen( ((int)intern.getSecond()) + "");
-				}
+					
+					intern.setSecond(-intern.getSecond());
+				
+					//displays number with or without decimal based on situation
+					if(intern.getDecReady()) {
+						face.writeToScreen(((int)intern.getSecond()) + "." + intern.getPostDecSecond());
+					}
+					else {
+						face.writeToScreen( ((int)intern.getSecond()) + "");
+					}
+				}	
 			}
 				
 			

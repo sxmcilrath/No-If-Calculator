@@ -25,19 +25,12 @@ public class NumListener implements ActionListener {
 		 */
 		
 		//if statement to decide whether or not to alter first or second number
+		
 		if(intern.getOpReady()) {
 			
-			//sets first number by taking number before and combining it with the string past the decimal
-			/*
-			 * CHANGE LATER!!!
-			 * I'm setting a temp var to hold the first num, change the reset function later
-			 * to better fit the situation 
-			 */
-			
+			//sets first number by taking number before and combining it with the string past the decimal			
 			intern.setFirst(Double.parseDouble(((int)intern.getFirst()) + "." + intern.getPostDecFirst()));
-			//intern.setSecond(tempNum);
 			intern.setOpReady(true);
-			
 			
 			if(intern.getSecond() != 0) {
 				//checks to see if user has pressed decimal button
@@ -57,8 +50,17 @@ public class NumListener implements ActionListener {
 				}
 			}
 			else {
-				face.writeToScreen("" + num);
-				intern.setSecond(num);
+				if(intern.getPMCheck()) {
+					num = -num;
+					face.writeToScreen("" + num);
+					intern.setSecond(num);
+					intern.setPMCheck(false);
+				}
+				else {
+					System.out.println(num);
+					face.writeToScreen("" + num);
+					intern.setSecond(num);
+				}
 			}
 		
 		}
@@ -66,18 +68,12 @@ public class NumListener implements ActionListener {
 		//first number in operation
 		else {
 			if(intern.getFirst() != 0) {
-				//checks to see if user has pressed decimal button
+					//checks to see if user has pressed decimal button
 					if(intern.getDecReady()) {
 						
 						String newNum;
-						//workaround if statements that might not be needed after switching postDec to string		
-						//if(intern.getPostDecReady() == false) {
-						//newNum = (((int)intern.getFirst()) + "." + num);
-						//intern.setPostDecReady(true);
-						//}
-						//else{
+					
 						newNum = (((int)intern.getFirst()) + "." + (intern.getPostDecFirst())+ "" + num);
-						//}
 					
 						intern.setPostDecFirst(((intern.getPostDecFirst())+ "" + num));
 						face.writeToScreen(newNum);
@@ -91,8 +87,16 @@ public class NumListener implements ActionListener {
 					}
 				}
 				else {
-					face.writeToScreen("" + num);
-					intern.setFirst(num);
+					if(intern.getPMCheck()) {
+						num = -num;
+						face.writeToScreen("" + num);
+						intern.setFirst(num);
+						intern.setPMCheck(false);
+					}
+					else {
+						face.writeToScreen("" + num);
+						intern.setFirst(num);
+					}
 				}
 		
 		}
