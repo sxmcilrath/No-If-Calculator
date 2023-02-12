@@ -9,6 +9,7 @@ public class CalcInternal {
 	private String postDecFirst;
 	private String postDecSecond;
 	private String operation;
+	private String prevOp; //stores previous operation
 	private double result;
 	
 	private boolean decReady;
@@ -63,6 +64,10 @@ public class CalcInternal {
 		
 	}
 	
+	public void setPrevOp(String op) {
+		prevOp = op;
+	}
+	
 	public void setDecReady(boolean temp) {
 		decReady = temp;
 	}
@@ -90,6 +95,8 @@ public class CalcInternal {
 	public void setSecCheck(boolean temp) {
 		secCheck = temp;
 	}
+	
+	
 	
 	//Getters
 	public double getFirst() {
@@ -144,6 +151,10 @@ public class CalcInternal {
 	
 	public boolean getSecCheck() {
 		return secCheck;
+	}
+	
+	public String getPrevOp() {
+		return prevOp;
 	}
 	
 	//Reset function to reset variables

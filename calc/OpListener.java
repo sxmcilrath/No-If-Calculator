@@ -20,6 +20,7 @@ public class OpListener implements ActionListener {
 	public void calcPrevOp() {
 		//needs to add up previous operations if applicable
 		if(intern.getOpReady() && intern.getSecCheck()) {
+			intern.setOperation(intern.getPrevOp());
 			intern.setFirst(intern.passOperation());
 			face.writeToScreen(intern.getFirst()+"");
 			intern.setSecond(0);
@@ -146,12 +147,17 @@ public class OpListener implements ActionListener {
 		
 		//implements equals button
 		if(opType.equals("=")) {
-			//if operations have already been done then it will make the first number the 
-			//result of the previous operation
+			
+			
+			//avoid errors when equal is pressed before 2nd num entered
 			if(!intern.getSecCheck()) {
 				return;
 			}
+			
+			//if operations have already been done then it will make the first number the 
+			//result of the previous operation and the operation will be the prev operation
 			if(intern.getEqualPressCheck()) {
+				intern.setOperation(intern.getPrevOp());
 				intern.setFirst(intern.getResult());
 			}
 			
@@ -159,8 +165,9 @@ public class OpListener implements ActionListener {
 			if(intern.getOperation().equals("/")) {
 				face.writeToScreen(intern.passOperation()+"");
 			}
-			
+			//case where it's not division
 			else {
+				
 				if(intern.getDecPressCheck()) {
 					intern.setSecond(Double.parseDouble(((int)intern.getSecond()) + "." + intern.getPostDecSecond()));
 					face.writeToScreen(intern.passOperation()+"");
@@ -169,10 +176,9 @@ public class OpListener implements ActionListener {
 					face.writeToScreen(((int)intern.passOperation())+"");
 				}
 			}
-			//reset first num
-			//intern.setFirst(0);
-			//intern.setSecond(0);
 			intern.setEqualPressCheck(true);
+			intern.setPrevOp(intern.getOperation());
+			intern.setOperation("none");
 			
 		}
 	

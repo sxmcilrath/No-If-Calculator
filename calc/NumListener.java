@@ -19,6 +19,11 @@ public class NumListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//resets internal if equal has been pressed and a new num 
+		//is immediately entered
+		if(intern.getEqualPressCheck() && intern.getOperation().equals("none")) {
+			intern.resetVar();
+		}
 		
 		//if statement to decide whether or not to alter first or second number
 		if(intern.getOpReady()) {
@@ -52,7 +57,6 @@ public class NumListener implements ActionListener {
 					intern.setPMCheck(false);
 				}
 				else {
-					System.out.println(num);
 					face.writeToScreen("" + num);
 					intern.setSecond(num);
 				}
@@ -85,8 +89,7 @@ public class NumListener implements ActionListener {
 					if(intern.getPMCheck()) {
 						if(intern.getDecReady()) {
 							
-							String newNum;
-							newNum = ((-(int)intern.getFirst()) + "." + (intern.getPostDecFirst())+ "" + num);
+							String newNum = ((-(int)intern.getFirst()) + "." + (intern.getPostDecFirst())+ "" + num);
 							intern.setPostDecFirst(((intern.getPostDecFirst())+ "" + num));
 							face.writeToScreen(newNum);
 						}
@@ -104,8 +107,8 @@ public class NumListener implements ActionListener {
 						*/
 					}
 					else {
-						//face.writeToScreen("" + num);
-						//intern.setFirst(num);
+						face.writeToScreen("" + num);
+						intern.setFirst(num);
 					}
 				}
 		
