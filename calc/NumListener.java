@@ -61,6 +61,7 @@ public class NumListener implements ActionListener {
 			}
 			//first num entered case
 			else {
+				
 				//need pmCheck to determine negative because
 				//it's first number entered
 				if(intern.getPMCheck()) {
@@ -80,6 +81,9 @@ public class NumListener implements ActionListener {
 		
 		//first number in operation
 		else {
+			
+			//checks will be the same for first and second number it just changes which num is modified
+			//check if it's first num pressed
 			if(intern.getFirst() != 0) {
 					//checks to see if user has pressed decimal button
 					if(intern.getDecReady()) {

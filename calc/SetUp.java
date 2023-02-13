@@ -20,19 +20,9 @@ public class SetUp {
 	 */
 	public static void setUpCalculator(CalculatorFace face) {
 
-		// add code here that will have the effect of connecting
-		// the given face to your calculator
-		CalcInternal intern = new CalcInternal();
-		/*
-		 * TO DO LIST
-		 * 
-		 * -Work on add, decimals dont work
-		 *  need to add a different boolean to see if any 
-		 *  decimal has been used for first or second and act accordingly.
-		 *  There is also something wrong when second is a decimal, it seems to store the old 
-		 *  decimal used for first.
-		 * 
-		 */
+
+		CalcInternal intern = new CalcInternal();	//var to represent internal state of calculator
+		
 		//connect operation buttons to listeners
 		face.addActionListener('+', new OpListener(face, intern, "+"));
 		face.addActionListener('-', new OpListener(face, intern, "-"));
