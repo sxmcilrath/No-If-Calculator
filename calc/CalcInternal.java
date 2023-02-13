@@ -25,7 +25,7 @@ public class CalcInternal {
 		// TODO Auto-generated constructor stub
 		first = 0;
 		second = 0; 
-		operation = null;
+		operation = "none";
 		prevOp = "none";
 		result = 0;
 		decReady = false;
@@ -184,11 +184,12 @@ public class CalcInternal {
 		//rounds decimals to take care of not needed zeros 
 		DecimalFormat calcFormat = new DecimalFormat("#.#############");
 		
+		
 		//addition 
 		if(operation.equals("+")) {
 			
 			result = first + second;
-			return result;
+			return Double.parseDouble(calcFormat.format(result));
 		}
 		
 		//subtraction

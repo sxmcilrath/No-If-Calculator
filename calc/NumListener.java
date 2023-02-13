@@ -94,7 +94,7 @@ public class NumListener implements ActionListener {
 							face.writeToScreen(newNum);
 						}
 						else {
-							String newNum = ((int)intern.getFirst()) + "" + num;
+							String newNum = ("" + -num);
 							face.writeToScreen(newNum);
 							intern.setFirst(Double.parseDouble(newNum));
 							
@@ -107,8 +107,18 @@ public class NumListener implements ActionListener {
 						*/
 					}
 					else {
-						face.writeToScreen("" + num);
-						intern.setFirst(num);
+						if(intern.getDecReady()) {
+							
+							String newNum = (((int)intern.getFirst()) + "." + (intern.getPostDecFirst())+ "" + num);
+							intern.setPostDecFirst(((intern.getPostDecFirst())+ "" + num));
+							face.writeToScreen(newNum);
+						}
+						else {
+							String newNum = ("" + num);
+							face.writeToScreen(newNum);
+							intern.setFirst(Double.parseDouble(newNum));
+							
+						}
 					}
 				}
 		

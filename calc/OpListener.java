@@ -25,6 +25,9 @@ public class OpListener implements ActionListener {
 			
 				intern.setOperation(intern.getPrevOp());
 			}
+			if(intern.getDecReady()) {
+				intern.setSecond(Double.parseDouble(((int)intern.getSecond()) + "." + intern.getPostDecSecond()));
+			}
 			
 			intern.setFirst(intern.passOperation());
 			face.writeToScreen(intern.getFirst()+"");
@@ -99,8 +102,8 @@ public class OpListener implements ActionListener {
 		
 		//implement decimal button
 		if (opType.equals(".")) {
-			if(intern.getDecReady() == false) {
-				System.out.println("making it past in opList");
+			
+			if(intern.getDecReady() == false) {				
 				
 				if(intern.getOpReady()) { 
 					face.writeToScreen((int)intern.getSecond()+"."); 
