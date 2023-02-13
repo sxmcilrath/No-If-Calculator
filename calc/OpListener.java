@@ -3,6 +3,10 @@ package calc;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Listener class for the operation buttons 
+ * @author Samuel McIlrath
+ */
 public class OpListener implements ActionListener {
 
 	private CalculatorFace face;	//CalculatorFace object to interact with screen
@@ -112,8 +116,10 @@ public class OpListener implements ActionListener {
 		//implement decimal button
 		if (opType.equals(".")) {
 			
+			//checks to see if decimal button has already been pressed
 			if(intern.getDecReady() == false) {				
 				
+				//checks to edit first or second number
 				if(intern.getOpReady()) { 
 					face.writeToScreen((int)intern.getSecond()+"."); 
 					}
@@ -122,6 +128,7 @@ public class OpListener implements ActionListener {
 					face.writeToScreen(((int)intern.getFirst())+".");
 					}
 				
+				//update decimal press booleans
 				intern.setDecReady(true);
 				intern.setDecPressCheck(true);
 			}

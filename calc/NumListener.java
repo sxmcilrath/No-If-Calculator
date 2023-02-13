@@ -3,24 +3,32 @@ package calc;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/**
+ * Listener class for numbers
+ * @author Samuel McIlrath
+ */
 public class NumListener implements ActionListener {
 
-	private CalculatorFace face;
-	private int num;
-	private CalcInternal intern;
+	private CalculatorFace face;	//CalculatorFace object used to access display
+	private int num;				//var to hold number pressed by user
+	private CalcInternal intern;	//CalcInternal object to access internal state of calculator
 	
-	public NumListener(CalculatorFace face, int num, CalcInternal intern) {
+	/**
+	 * constructor 
+	 * @param face		CalculatorFace object to interact with screen
+	 * @param intern 	CalcInternal object to interact with calculator internals 
+	 * @param num		number pressed by user
+	 */
+	NumListener(CalculatorFace face, int num, CalcInternal intern) {
 		this.face = face;
 		this.num = num;
 		this.intern = intern;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//resets internal if equal has been pressed and a new num 
-		//is immediately entered
+	
+		//resets internal if equal has been pressed and a new num is entered right after
 		if(intern.getEqualPressCheck() && intern.getOperation().equals("none")) {
 			intern.resetVar();
 		}
@@ -28,20 +36,22 @@ public class NumListener implements ActionListener {
 		//if statement to decide whether or not to alter first or second number
 		if(intern.getOpReady()) {
 			
+			//saving first number before moving onto second
 			//sets first number by taking number before and combining it with the string past the decimal			
 			intern.setFirst(Double.parseDouble(((int)intern.getFirst()) + "." + intern.getPostDecFirst()));
 			intern.setOpReady(true);
 			
+			//check to see if this is the first number entered
 			if(intern.getSecond() != 0) {
+				
 				//checks to see if user has pressed decimal button
 				if(intern.getDecReady()) {
 					
-					String newNum;
-					newNum = (((int)intern.getSecond()) + "." + intern.getPostDecSecond()+ "" + num);
-					
-					intern.setPostDecSecond(((intern.getPostDecSecond())+ "" + num));
+					String newNum = (((int)intern.getSecond()) + "." + intern.getPostDecSecond()+ "" + num);	//holds int value of what is on the left side of decimal and string of what's right
+					intern.setPostDecSecond(((intern.getPostDecSecond())+ "" + num)); //updates right side of decimal
 					face.writeToScreen(newNum);
 				}
+				//non decimal case
 				else {
 					String newNum = ((int)intern.getSecond()) + "" + num;
 					face.writeToScreen(newNum);
@@ -49,7 +59,10 @@ public class NumListener implements ActionListener {
 					
 				}
 			}
+			//first num entered case
 			else {
+				//need pmCheck to determine negative because
+				//it's first number entered
 				if(intern.getPMCheck()) {
 					num = -num;
 					face.writeToScreen("" + num);
@@ -61,8 +74,8 @@ public class NumListener implements ActionListener {
 					intern.setSecond(num);
 				}
 			}
-			//lets calcinternal know that the sec # ha been modified
-			intern.setSecCheck(true);
+			
+			intern.setSecCheck(true);	//lets calcinternal know that the second # has been modified
 		}
 		
 		//first number in operation
@@ -100,11 +113,6 @@ public class NumListener implements ActionListener {
 							
 						}
 						
-						/*num = -num;
-						face.writeToScreen("" + num);
-						intern.setFirst(num);
-						intern.setPMCheck(false);
-						*/
 					}
 					else {
 						if(intern.getDecReady()) {

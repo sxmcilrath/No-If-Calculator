@@ -2,9 +2,10 @@ package calc;
 
 import java.text.DecimalFormat;
 
-/*
+/**
  * Represents the internals of the calculator
  * stores nums, operations, and booleans depending on the case
+ * @author Samuel McIlrath
  */
 public class CalcInternal {
 
@@ -18,7 +19,7 @@ public class CalcInternal {
 	
 	private boolean decReady;		//boolean for whether the target number is decimal
 	private boolean postDecReady; 	//boolean for post decimal number
-	private boolean opReady; 		//boolean used to check if operation has been input
+	private boolean opReady; 		//boolean used to check if operation has been input, I use it a lot to check to edit first or second number
 	private boolean decPressCheck; 	// checks used for if either first or second is a decimal
 	private boolean equalPressCheck;//checks for equal button press
 	private boolean pmCheck; 		//used to check for case where # is 0 but PM has been hit
