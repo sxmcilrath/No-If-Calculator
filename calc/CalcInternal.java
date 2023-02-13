@@ -322,6 +322,9 @@ public class CalcInternal {
 		
 		//division
 		if(operation.equals("/")) {
+			if(second == 0) {
+				return 0;
+			}
 			result = first / second;
 			return Double.parseDouble(calcFormat.format(result));
 		}
