@@ -9,6 +9,10 @@ public class OpListener implements ActionListener {
 	private CalcInternal intern;
 	String opType;
 	
+	/**
+	 * constructor 
+	 * @param val of first
+	 */
 	public OpListener(CalculatorFace face, CalcInternal intern, String opType) {
 		this.face = face;
 		this.intern = intern;
