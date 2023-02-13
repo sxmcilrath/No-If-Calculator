@@ -26,6 +26,7 @@ public class CalcInternal {
 		first = 0;
 		second = 0; 
 		operation = null;
+		prevOp = "none";
 		result = 0;
 		decReady = false;
 		postDecReady = false;

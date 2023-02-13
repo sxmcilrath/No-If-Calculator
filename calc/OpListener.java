@@ -20,10 +20,16 @@ public class OpListener implements ActionListener {
 	public void calcPrevOp() {
 		//needs to add up previous operations if applicable
 		if(intern.getOpReady() && intern.getSecCheck()) {
-			intern.setOperation(intern.getPrevOp());
+			
+			if(!intern.getPrevOp().equals("none") && intern.getOperation().equals("none")) {
+			
+				intern.setOperation(intern.getPrevOp());
+			}
+			
 			intern.setFirst(intern.passOperation());
 			face.writeToScreen(intern.getFirst()+"");
 			intern.setSecond(0);
+
 		}
 	}
 		
@@ -156,7 +162,7 @@ public class OpListener implements ActionListener {
 			
 			//if operations have already been done then it will make the first number the 
 			//result of the previous operation and the operation will be the prev operation
-			if(intern.getEqualPressCheck()) {
+			if(intern.getEqualPressCheck() && intern.getOperation().equals("none")) {
 				intern.setOperation(intern.getPrevOp());
 				intern.setFirst(intern.getResult());
 			}
