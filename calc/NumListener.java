@@ -59,21 +59,37 @@ public class NumListener implements ActionListener {
 					
 				}
 			}
-			//first num entered case
 			else {
-				
-				//need pmCheck to determine negative because
-				//it's first number entered
 				if(intern.getPMCheck()) {
-					num = -num;
-					face.writeToScreen("" + num);
-					intern.setSecond(num);
-					intern.setPMCheck(false);
+					if(intern.getDecReady()) {
+						
+						String newNum = ((-(int)intern.getSecond()) + "." + (intern.getPostDecSecond())+ "" + num);
+						intern.setPostDecSecond(((intern.getPostDecSecond())+ "" + num));
+						face.writeToScreen(newNum);
+					}
+					else {
+						String newNum = ("" + -num);
+						face.writeToScreen(newNum);
+						intern.setSecond(Double.parseDouble(newNum));
+						
+					}
+					
 				}
 				else {
-					face.writeToScreen("" + num);
-					intern.setSecond(num);
+					if(intern.getDecReady()) {
+						
+						String newNum = (((int)intern.getSecond()) + "." + (intern.getPostDecSecond())+ "" + num);
+						intern.setPostDecSecond(((intern.getPostDecSecond())+ "" + num));
+						face.writeToScreen(newNum);
+					}
+					else {
+						String newNum = ("" + num);
+						face.writeToScreen(newNum);
+						intern.setSecond(Double.parseDouble(newNum));
+						
+					}
 				}
+				
 			}
 			
 			intern.setSecCheck(true);	//lets calcinternal know that the second # has been modified

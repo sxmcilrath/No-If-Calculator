@@ -121,6 +121,7 @@ public class OpListener implements ActionListener {
 				
 				//checks to edit first or second number
 				if(intern.getOpReady()) { 
+					
 					face.writeToScreen((int)intern.getSecond()+"."); 
 					}
 				
