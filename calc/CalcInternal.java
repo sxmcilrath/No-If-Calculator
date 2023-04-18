@@ -7,6 +7,8 @@ import java.text.DecimalFormat;
  * stores nums, operations, and booleans depending on the case
  * @author Samuel McIlrath
  */
+
+//thing
 public class CalcInternal {
 
 	private double first;			//first num in operation
