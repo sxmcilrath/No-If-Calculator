@@ -5,14 +5,20 @@ import java.awt.event.ActionListener;
 
 public class EqualsListener implements ActionListener {
 
+	CalculatorFace face;
+	CalcInternal intern;
+	
 	public EqualsListener(CalculatorFace face, CalcInternal intern) {
-		// TODO Auto-generated constructor stub
+		this.face = face;
+		this.intern = intern;
+	
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		intern.clear();
+		face.writeToScreen("");
+		
 	}
 
 }

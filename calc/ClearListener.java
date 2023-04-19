@@ -14,9 +14,9 @@ public class ClearListener implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-																											
-		
+	public void actionPerformed(ActionEvent e) {																			
+		intern.clear();
+		face.writeToScreen("");
 	}								
 
 }

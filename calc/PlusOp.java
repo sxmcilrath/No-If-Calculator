@@ -1,10 +1,11 @@
 package calc;
 
-public class PlusOp implements OpState {
+import java.text.DecimalFormat;
 
-	@Override
-	public void operate(CalcInternal intern, DecState dec) {
-		String result = Integer.pa
+public class PlusOp extends OpState {
+	
+
+	public String perform(double current, double total) {
+		return (calcFormat.format(current + total));
 	}
-
 }

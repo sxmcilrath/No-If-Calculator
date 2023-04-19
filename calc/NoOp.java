@@ -1,11 +1,9 @@
 package calc;
 
-public class NoOp implements OpState {
+public class NoOp extends OpState {
 
-	@Override
-	public void operate(CalcInternal intern, DecState dec) {
-		intern.setTotal(intern.getCurrent());
-		intern.setCurrent("");
+	public String perform(double current, double total) {
+		return(calcFormat.format((current)));
 	}
 
 }

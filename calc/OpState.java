@@ -1,7 +1,20 @@
 package calc;
 
-public interface OpState {
+import java.text.DecimalFormat;
+
+public abstract class OpState {
+
+	String current;
+	String next;
+	DecimalFormat calcFormat = new DecimalFormat("#.#############");
 
 	
-	public void operate(CalcInternal intern, DecState dec);
+	abstract public String perform(double current, double total);
+	
+	public void operate(CalcInternal intern) {
+		double current = Double.parseDouble(intern.getCurrent());
+		double total = Double.parseDouble(intern.getTotal());
+		intern.setTotal(perform(current, total));
+		intern.setCurrent("");
+	}
 }

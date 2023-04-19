@@ -10,16 +10,10 @@ import java.text.DecimalFormat;
 
 //thing
 public class CalcInternal {
-	String current;
-	String total;
+	String current = "";
+	String total = "0";
 	OpState op = new NoOp();
 	DecState dec = new noDec();
-	
-	
-	
-	public CalcInternal() {
-
-	}
 	
 	public String takeNum(int num) {
 		
@@ -29,13 +23,15 @@ public class CalcInternal {
 	}
 	
 	public String takeOp(OpState operation) {
-		op.operate(this, dec);
+		op.operate(this);
 		op = operation;
+		System.out.println(current + "current ");
+		System.out.println(total + "total");
 		return total;
 	}
 	
 	public String dec() {
-		dec.operate(current);
+		current = dec.operate(current);
 		dec = new hasDec();
 		return current;
 	}
@@ -43,6 +39,13 @@ public class CalcInternal {
 	public String PM() {
 		
 		return "";
+	}
+	
+	public void clear() {
+		current = "";
+		total = "0";
+		op = new NoOp();
+		dec = new noDec();
 	}
 	
 	

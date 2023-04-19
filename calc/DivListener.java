@@ -5,14 +5,17 @@ import java.awt.event.ActionListener;
 
 public class DivListener implements ActionListener {
 
+	CalculatorFace face;
+	CalcInternal intern;
+	
 	public DivListener(CalculatorFace face, CalcInternal intern) {
-		// TODO Auto-generated constructor stub
+		this.face = face;
+		this.intern = intern;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		face.writeToScreen(intern.takeOp(new DivOp()));
 	}
 
 }
