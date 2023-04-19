@@ -3,5 +3,5 @@ package calc;
 public interface OpState {
 
 	
-	public void operate(CalcInternal intern);
+	public void operate(CalcInternal intern, DecState dec);
 }

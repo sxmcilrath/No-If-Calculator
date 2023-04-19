@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 public class CalcInternal {
 	String current;
 	String total;
-	OpState op;
+	OpState op = new NoOp();
 	DecState dec = new noDec();
 	
 	
@@ -29,7 +29,7 @@ public class CalcInternal {
 	}
 	
 	public String takeOp(OpState operation) {
-		op.operate(this);
+		op.operate(this, dec);
 		op = operation;
 		return total;
 	}
@@ -48,6 +48,8 @@ public class CalcInternal {
 	
 	
 
+	
+	
 	public String getCurrent() {
 		return current;
 	}
