@@ -1,6 +1,6 @@
 package calc;
 
-public class hasDec extends DecState<Double> {
+public class hasDec extends DecState {
 
 	@Override
 	public String operate(String current) {
@@ -8,8 +8,5 @@ public class hasDec extends DecState<Double> {
 		return current;
 	}
 	
-	public Double alterNum(String temp) {
-		return Double.parseDouble(temp);
-	}
 
 }

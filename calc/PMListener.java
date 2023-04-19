@@ -5,14 +5,18 @@ import java.awt.event.ActionListener;
 
 public class PMListener implements ActionListener {
 
+	CalculatorFace face;
+	CalcInternal intern;
+	
 	public PMListener(CalculatorFace face, CalcInternal intern) {
-		// TODO Auto-generated constructor stub
+		this.face = face;
+		this.intern = intern;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		face.writeToScreen(intern.PM());
+		
 	}
 
 }

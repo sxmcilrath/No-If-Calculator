@@ -1,9 +1,8 @@
 package calc;
 
-public abstract class DecState<T> {
+public abstract class DecState{
 
 	abstract public String operate(String current);
 	
-	abstract public T alterNum(String temp);
 	
 }
