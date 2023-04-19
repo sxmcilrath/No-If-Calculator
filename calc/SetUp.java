@@ -24,14 +24,14 @@ public class SetUp {
 		CalcInternal intern = new CalcInternal();	//var to represent internal state of calculator
 		
 		//connect operation buttons to listeners
-		face.addActionListener('+', new OpListener(face, intern, "+"));
-		face.addActionListener('-', new OpListener(face, intern, "-"));
-		face.addActionListener('*', new OpListener(face, intern, "*"));
-		face.addActionListener('/', new OpListener(face, intern, "/" ));
-		face.addActionListener('C', new OpListener(face, intern, "C"));
-		face.addActionListener('.', new OpListener(face, intern, "."));
-		face.addActionListener('=', new OpListener(face,intern,"="));
-		face.addPlusMinusActionListener(new OpListener(face, intern, "PM")); 
+		face.addActionListener('+', new PlusListener(face, intern));
+		face.addActionListener('-', new MinusListener(face, intern));
+		face.addActionListener('*', new MultListener(face, intern));
+		face.addActionListener('/', new DivListener(face, intern));
+		face.addActionListener('C', new ClearListener(face, intern));
+		face.addActionListener('.', new DecListener(face, intern));
+		face.addActionListener('=', new EqualsListener(face,intern));
+		face.addPlusMinusActionListener(new PMListener(face, intern)); 
 		
 		//connect #'s to action listeners 
 		face.addNumberActionListener(0, new NumListener(face, 0, intern));
