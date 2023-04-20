@@ -7,7 +7,7 @@ public class HasNumPM implements PMState {
 	
 	@Override
 	public String operate(String current) {
-		// TODO Auto-generated method stub
+		
 		double temp = Double.parseDouble(current);
 		
 		return calcFormat.format(0 - temp);

@@ -7,4 +7,7 @@ public class MinOp extends OpState {
 		return calcFormat.format(total - current);
 	}
 
+	public int equalsIndex() {
+		return 1;
+	}
 }

@@ -16,8 +16,7 @@ public class EqualsListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		intern.clear();
-		face.writeToScreen("");
+		face.writeToScreen(intern.equals());
 		
 	}
 
