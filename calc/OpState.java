@@ -13,6 +13,7 @@ public abstract class OpState {
 	
 	abstract public int equalsIndex();
 	
+	
 	public void operate(CalcInternal intern) {
 		double current = Double.parseDouble(intern.getCurrent());
 		double total = Double.parseDouble(intern.getTotal());

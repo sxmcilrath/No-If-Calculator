@@ -10,60 +10,93 @@ import java.util.Map;
  * @author Samuel McIlrath
  */
 
-//thing
+/**
+ * handles all the different states of the class
+ * @author Samuel McIlrath
+ *
+ */
 public class CalcInternal {
-	String current = "0";
-	String total = "0";
-	String postDec;
 	
-	OpState op = new NoOp();
-	DecState dec = new noDec();
-	PMState pm = new NoNumPM();
-	EqualState eq = new IncompleteEquals();
-	PressState press = new FirstPress();
+	String current = "0";	//represents the current number
+	String total = "0";		//represents the running total
 	
-	EqualState[] eqStates = {new IncompleteEquals(), new CompleteEquals()};
+	OpState op = new NoOp();		//represents the operation state
+	DecState dec = new noDec();		//represents the decimal state
+	PMState pm = new NoNumPM();		//represents the PM state
+	EqualState eq = new IncompleteEquals();		//represents the equals state
+	PressState press = new FirstPress();		//represents the press state
 	
-	DecimalFormat calcFormat = new DecimalFormat("#.#############");
+	EqualState[] eqStates = {new IncompleteEquals(), new CompleteEquals()};	//array of equals states
 	
-	Map<Boolean, PMState> pmMap = new HashMap<Boolean, PMState>();
+	DecimalFormat calcFormat = new DecimalFormat("#.#############");	//helps with decimal formatting
 	
+	Map<Boolean, PMState> pmMap = new HashMap<Boolean, PMState>();	//Map to switch PM states
+	
+	/**
+	 * constructor to fill pmMap
+	 */
 	public CalcInternal() {
 		pmMap.put(true, new HasDecPM());
 		pmMap.put(false, new HasNumPM());
 	}
 	
-	
+	/**
+	 * takes a number input 	
+	 * @param num	user input
+	 * @return		print to screen
+	 */
 	public String takeNum(int num) {
 		
-		press.setCurrent(this, ""+num);
-		press = press.next();
-		pm = pmMap.get(current.contains("."));
-		eq = eqStates[op.equalsIndex()];
+		press.setCurrent(this, ""+num);	//sets current based on press state
+		press = press.next();			//change state
+		pm = pmMap.get(current.contains("."));	//change pm state with map 
+		eq = eqStates[op.equalsIndex()];	//change eq state with array
 		
 		return current;
 	}
 	
+	/**
+	 * Takes operation and acts accordingly
+	 * 
+	 * @param operation		the operation state
+	 * @return 		total of operation
+	 */
 	public String takeOp(OpState operation) {
-		op.operate(this);
-		op = operation;
-		pm = new NoNumPM();
+		
+		op.operate(this); 	//call current op state
+		op = operation;		//set op to the input operation
+		
+		//update other states
+		pm = new NoNumPM();	
 		press = new FirstPress();
 		dec = new noDec();
 		return total;
 	}
 	
+	/**
+	 * handles equals press
+	 * @return	returns operation total
+	 */
 	public String equals() {
 		
-		eq.operate(this);
-		eq = eq.next();
+		eq.operate(this);	//operate with given op
+		eq = eq.next();		//change eq state
 		return total;
 	}
 	
+	/**
+	 * handles a decimal press
+	 * 
+	 * @return	returns the altered current number 
+	 */
 	public String dec() {
-		press.setCurrent(this, "");
+		
+		press.setCurrent(this, "");	//set current num
 		press = press.next();
-		current = dec.operate(current);
+		
+		current = dec.operate(current);	//alter current with dec state context
+		
+		//change states
 		dec = new hasDec();
 		pm = pmMap.get(current.contains("."));
 		return current;
