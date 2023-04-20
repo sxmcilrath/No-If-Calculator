@@ -1,6 +1,6 @@
 package calc;
 
-public class noDec extends DecState{
+public class noDec implements DecState{
 
 	@Override
 	public String operate(String current) {

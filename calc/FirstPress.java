@@ -1,5 +1,9 @@
 package calc;
-
+/**
+ * 
+ * @author Sam M
+ *
+ */
 public class FirstPress implements PressState {
 
 	@Override

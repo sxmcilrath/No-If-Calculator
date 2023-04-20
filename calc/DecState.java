@@ -1,8 +1,13 @@
 package calc;
+/**
+ * interface for decimal states
+ * 
+ * @author Sam M
+ *
+ */
+public interface DecState{
 
-public abstract class DecState{
-
-	abstract public String operate(String current);
+	public String operate(String current);	//changes current based on state
 	
 	
 }

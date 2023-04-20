@@ -1,18 +1,21 @@
 package calc;
 
-public class CompleteEquals extends EqualState {
+/**
+ * represets equal state when a full expression is entered
+ * @author Samuel McIlrath
+ *
+ */
+public class CompleteEquals implements EqualState {
 
 	@Override
+	/**
+	 * takes the internal 
+	 * Then updates current and sets the new operation as NoOp
+	 */
 	public void operate(CalcInternal intern) {
-		prev = intern.getCurrent();
-		prevOp = intern.getOp();
 		intern.takeOp(new NoOp());
 		intern.setCurrent(intern.getTotal());
 		
 	}
-	
-	public EqualState next() {
-		return new ConsecutiveEquals(prev, prevOp);
-	}
-
 }
+	

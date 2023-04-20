@@ -80,7 +80,6 @@ public class CalcInternal {
 	public String equals() {
 		
 		eq.operate(this);	//operate with given op
-		eq = eq.next();		//change eq state
 		return total;
 	}
 	
@@ -102,16 +101,24 @@ public class CalcInternal {
 		return current;
 	}
 	
+	/**
+	 * handles PM press
+	 * @return 	returns altered current
+	 */
 	public String PM() {
 	
+		current = pm.operate(current);	//changes current based on pm state
 		
-		
-		current = pm.operate(current);
+		//update states
 		press = press.next();
 		pm = pm.next();
 		return current;
 	}
 	
+	/**
+	 * handles clear press
+	 * just resets all states
+	 */
 	public void clear() {
 		current = "0";
 		total = "0";
@@ -126,23 +133,42 @@ public class CalcInternal {
 	
 
 	
-	
+	/**
+	 * getter for current
+	 * @return	current 
+	 */
 	public String getCurrent() {
 		return current;
 	}
 	
+	/**
+	 * getter for total
+	 * @return	total 
+	 */
 	public String getTotal() {
 		return total;
 	}
 	
+	/**
+	 * getter for current operation
+	 * @return	operation state
+	 */
 	public OpState getOp() {
 		return op;
 	}
 	
+	/**
+	 * setter for current
+	 * @param current		new current 
+	 */
 	public void setCurrent(String current) {
 		this.current  = current;
 	}
 	
+	/**
+	 * setter for total
+	 * @param total			new total
+	 */
 	public void setTotal(String total) {
 		this.total = total;
 	}

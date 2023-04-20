@@ -1,6 +1,6 @@
 package calc;
 
-public class IncompleteEquals extends EqualState {
+public class IncompleteEquals implements EqualState {
 
 	@Override
 	public void operate(CalcInternal intern) {
@@ -8,8 +8,5 @@ public class IncompleteEquals extends EqualState {
 		//shouldn't do anything
 	}
 	
-	public EqualState next() {
-		return this;
-	}
 
 }
