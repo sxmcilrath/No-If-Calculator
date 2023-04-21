@@ -26,6 +26,9 @@ public class NumListener implements ActionListener {
 	}
 
 	@Override
+	/**
+	 * calls the takeNum method in internal 
+	 */
 	public void actionPerformed(ActionEvent e) {
 	
 	face.writeToScreen(intern.takeNum(num));

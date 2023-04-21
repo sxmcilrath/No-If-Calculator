@@ -26,6 +26,10 @@ public class NoOp extends OpState {
 		intern.setCurrent("0");
 	}
 	
+	/**
+	 * returns the index for IncompleteEquals state 
+	 * in internal
+	 */
 	public int equalsIndex() {
 		return 0;
 	}
