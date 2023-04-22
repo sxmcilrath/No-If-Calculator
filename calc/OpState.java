@@ -37,8 +37,11 @@ public abstract class OpState {
 	 * @param intern	calc internal
 	 */
 	public void operate(CalcInternal intern) {
+		//turns intern strings to doubles
 		double current = Double.parseDouble(intern.getCurrent());
 		double total = Double.parseDouble(intern.getTotal());
+		
+		//updates  intern variables
 		intern.setTotal(perform(current, total));
 		intern.setCurrent("0");
 	}
